@@ -17,12 +17,57 @@ public class Barang {
     private double Volume;
     
     public Barang(){
-        
+        this.Stok = 0;
     }
     
-    public setID(String ID){
+    public void setID(String ID){
         this.IDBarang = ID;
     }
     
+    public void setJenis(String jenis){
+        this.Jenis = jenis;
+    }
     
+    public void setNama(String nama){
+        this.NamaBarang = nama;
+    }
+        
+    public void setVolume(double v){
+        this.Volume = v;
+    }
+    
+    public String getID(){
+        return this.IDBarang;
+    }
+    
+    public String getJenis(){
+        return this.Jenis;
+    }
+    
+    public String getNama(){
+        return this.NamaBarang;
+    }
+    
+    
+    public int getStock(){
+        return this.Stok;
+    }
+    
+    public double getVolume(){
+        return this.Volume;
+    }
+    
+    public void addStock(int n){
+        this.Stok = this.Stok + n;
+    }
+    
+    public void removeStock(int n){
+        //pengencekan supaya stok tidak minus
+        if((this.Stok-n)<0){
+            this.Stok = 0;
+        }
+        else{
+            this.Stok = this.Stok - n;
+        }
+    }
 }
