@@ -64,10 +64,7 @@ public class Barang {
     public void removeStock(int n){
         //pengencekan supaya stok tidak minus
         if((this.Stok-n)<0){
+            n=Stok;
             this.Stok = 0;
         }
-        else{
-            this.Stok = this.Stok - n;
-        }
-    }
 }
