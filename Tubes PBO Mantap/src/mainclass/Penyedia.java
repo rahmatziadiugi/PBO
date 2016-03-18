@@ -13,6 +13,6 @@ public class Penyedia extends Orang{
     Barang[] daftarBarang;
     
     public createBarang(){
-        
+        daftarBarang = new Barang[nMax];
     }
 }

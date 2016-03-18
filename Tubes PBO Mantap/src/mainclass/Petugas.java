@@ -22,10 +22,10 @@ public class Petugas extends Orang{
     }
     
     public void setNIP(long NIP){
-        
+        this.NIP = NIP;
     }
     
     public long getNIP(){
-        
+        return NIP;
     }
 }
