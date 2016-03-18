@@ -12,7 +12,11 @@ package mainclass;
 public class Penyedia extends Orang{
     Barang[] daftarBarang;
     
-    public createBarang(){
-        daftarBarang = new Barang[nMax];
+    public Penyedia(String name){
+        super(name);
+    }
+    
+    public void createBarang(){
+        daftarBarang = new Barang[99];
     }
 }
