@@ -62,62 +62,23 @@ public class Gudang {
     }
     
     public void AddBarang(Barang b, int n){
-        boolean oldone = false;
-        int a = -1;
-        /*cek stok yang diminta cukup*/
-        if(b.GetStock()<n){
-            System.out.println("Stok tidak cukup");
-        }
-        else{
-            /*cek gudang*/
-            for(int i=0;i<this.JenisTotal;i++){
-                if(this.JenisBarang[i] == null ? b.GetJenis() == null : this.JenisBarang[i].equals(b.GetJenis())){
-                    /*cek slot di gudang*/
-                    if((this.VolumeMax-this.CurrentVolume)>(b.GetVolume()*n)){
-                        /*cek udah ada barang*/
-                        for(Barang DaftarBarang1 : this.DaftarBarang){
-                            if(DaftarBarang1.GetID() == null ? b.GetID() == null : DaftarBarang1.GetID().equals(b.GetID())){
-                                oldone = true;
-                                DaftarBarang1.AddStock(n);
-                                break;
-                            }
-                        }
-                        if(!oldone){
-                            this.DaftarBarang.add(new Barang(b.GetID(),b.GetJenis(),b.GetNama(),n,b.GetVolume()));
-                        }
-                        this.CurrentVolume = this.CurrentVolume + (b.GetVolume()*n);
-                        b.RemoveStock(n);
-                    }
-                    else{
-                        System.out.println("Slot di gudang tidak cukup lagi");
-                    }
-                }
-                else{
-                    System.out.println("Gudang tidak sesuai");
-                }
+        boolean found = false;
+        for(Barang DaftarBarang1 : this.DaftarBarang){
+            if(DaftarBarang1.GetID().equals(b.GetID())){
+                DaftarBarang1.SetStock(DaftarBarang1.GetStock()-n);
+                found = true;
+                break;
             }
+        }
+        if(!found){
+            this.DaftarBarang.add(new Barang(b.GetID(),b.GetJenis(),b.GetNama(),n,b.GetVolume()));
         }
     }
     
     public void removeBarang(Barang b, int n){
-        boolean found = false;
-        /*cari barang ada atau gak*/
         for(Barang DaftarBarang1 : this.DaftarBarang){
             if(DaftarBarang1.GetID().equals(b.GetID())){
-                found=true;
-                this.CurrentVolume = this.CurrentVolume - (n * DaftarBarang1.GetVolume());
-                /*cek stok cukup*/
-                if(DaftarBarang1.GetStock()>n){
-                    DaftarBarang1.RemoveStock(n);
-                }
-                else if(DaftarBarang1.GetStock()==n){
-                    this.DaftarBarang.remove(DaftarBarang1);
-                }
-                else{
-                    System.out.println("Stock tidak cukup");
-                    b.RemoveStock(n);
-                }
-                b.AddStock(n);
+                DaftarBarang1.SetStock(DaftarBarang1.GetStock()-n);
                 break;
             }
         }
