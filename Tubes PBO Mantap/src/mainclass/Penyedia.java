@@ -87,11 +87,11 @@ public class Penyedia extends Orang{
         System.out.println("Nama\t: "+this.GetName());
         System.out.println("ID\t: "+this.ID);
         System.out.println("ID Barang\tBarang\t\tJenis\t\t\tStok");
-        for(int i=0;i<this.DaftarBarang.size();i++){
-            System.out.print(this.DaftarBarang.get(i).GetID()+"\t\t");
-            System.out.print(this.DaftarBarang.get(i).GetNama()+"\t\t");
-            System.out.print(this.DaftarBarang.get(i).GetJenis()+"\t\t");
-            System.out.print(this.DaftarBarang.get(i).GetStock());
+        for (Barang DaftarBarang1 : this.DaftarBarang) {
+            System.out.print(DaftarBarang1.GetID() + "\t\t");
+            System.out.print(DaftarBarang1.GetNama() + "\t\t");
+            System.out.print(DaftarBarang1.GetJenis() + "\t\t");
+            System.out.print(DaftarBarang1.GetStock());
             System.out.println();
         }
         System.out.println();

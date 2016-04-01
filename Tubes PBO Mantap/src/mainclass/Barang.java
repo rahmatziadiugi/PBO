@@ -48,6 +48,10 @@ public class Barang {
     public void SetNama(String Nama){
         this.NamaBarang = Nama;
     }
+    
+    public void SetStock(int i){
+        this.Stock = i;
+    }
         
     public void SetVolume(double Volume){
         this.Volume = Volume;

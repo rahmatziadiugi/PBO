@@ -63,7 +63,7 @@ public class Gudang {
     
     public void AddBarang(Barang b, int n){
         boolean oldone = false;
-        System.out.println("cek barang");
+        int a = -1;
         /*cek stok yang diminta cukup*/
         if(b.GetStock()<n){
             System.out.println("Stok tidak cukup");
@@ -71,20 +71,19 @@ public class Gudang {
         else{
             /*cek gudang*/
             for(int i=0;i<this.JenisTotal;i++){
-                if(this.JenisBarang[i]==b.GetJenis()){
+                if(this.JenisBarang[i] == null ? b.GetJenis() == null : this.JenisBarang[i].equals(b.GetJenis())){
                     /*cek slot di gudang*/
                     if((this.VolumeMax-this.CurrentVolume)>(b.GetVolume()*n)){
                         /*cek udah ada barang*/
-                        for(int j=0;j<this.DaftarBarang.size();i++){
-                            if(this.DaftarBarang.get(j).GetID()==b.GetID()){
-                                this.DaftarBarang.get(j).AddStock(n);
+                        for(Barang DaftarBarang1 : this.DaftarBarang){
+                            if(DaftarBarang1.GetID() == null ? b.GetID() == null : DaftarBarang1.GetID().equals(b.GetID())){
                                 oldone = true;
+                                DaftarBarang1.AddStock(n);
                                 break;
                             }
                         }
                         if(!oldone){
-                            Barang brg = new Barang(b.GetID(),b.GetJenis(),b.GetNama(),b.GetStock(),b.GetVolume());
-                            this.DaftarBarang.add(brg);
+                            this.DaftarBarang.add(new Barang(b.GetID(),b.GetJenis(),b.GetNama(),n,b.GetVolume()));
                         }
                         this.CurrentVolume = this.CurrentVolume + (b.GetVolume()*n);
                         b.RemoveStock(n);
@@ -103,20 +102,22 @@ public class Gudang {
     public void removeBarang(Barang b, int n){
         boolean found = false;
         /*cari barang ada atau gak*/
-        for(int i=0;i<this.DaftarBarang.size()+1;i++){
-            if(this.DaftarBarang.get(i).GetID().equals(b.GetID())){
+        for(Barang DaftarBarang1 : this.DaftarBarang){
+            if(DaftarBarang1.GetID().equals(b.GetID())){
                 found=true;
-                this.CurrentVolume = this.CurrentVolume - (n * this.DaftarBarang.get(i).GetVolume());
+                this.CurrentVolume = this.CurrentVolume - (n * DaftarBarang1.GetVolume());
                 /*cek stok cukup*/
-                if(this.DaftarBarang.get(i).GetStock()>n){
-                    this.DaftarBarang.get(i).RemoveStock(n);
+                if(DaftarBarang1.GetStock()>n){
+                    DaftarBarang1.RemoveStock(n);
                 }
-                else if(this.DaftarBarang.get(i).GetStock()==n){
-                    this.DaftarBarang.remove(i);
+                else if(DaftarBarang1.GetStock()==n){
+                    this.DaftarBarang.remove(DaftarBarang1);
                 }
                 else{
                     System.out.println("Stock tidak cukup");
+                    b.RemoveStock(n);
                 }
+                b.AddStock(n);
                 break;
             }
         }
@@ -129,11 +130,11 @@ public class Gudang {
             System.out.println("\t"+(i+1)+". "+this.JenisBarang[i]);
         }
         System.out.println("ID Barang\tBarang\t\tJenis\t\t\tStok");
-        for(int i=0;i<this.DaftarBarang.size();i++){
-            System.out.print(this.DaftarBarang.get(i).GetID()+"\t\t");
-            System.out.print(this.DaftarBarang.get(i).GetNama()+"\t\t");
-            System.out.print(this.DaftarBarang.get(i).GetJenis()+"\t\t");
-            System.out.print(this.DaftarBarang.get(i).GetStock());
+        for (Barang DaftarBarang1 : this.DaftarBarang) {
+            System.out.print(DaftarBarang1.GetID() + "\t\t");
+            System.out.print(DaftarBarang1.GetNama() + "\t\t");
+            System.out.print(DaftarBarang1.GetJenis() + "\t\t");
+            System.out.print(DaftarBarang1.GetStock());
             System.out.println();
         }
         System.out.println();

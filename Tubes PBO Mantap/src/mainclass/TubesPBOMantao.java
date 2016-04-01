@@ -29,6 +29,7 @@ public class TubesPBOMantao {
         p1.ViewAllBarang();
         p2.ViewAllBarang();
         
+        System.out.println("===================================================");
         
         Gudang g1 = new Gudang("AR1380",80);
         Gudang g2 = new Gudang("SR1250",50);
@@ -37,6 +38,7 @@ public class TubesPBOMantao {
         g2.SetJenis("Sniper Rifle");
         
         g1.AddBarang(p1.GetBarang(0),2);
+        g1.AddBarang(p1.GetBarang(0),1);
         g1.AddBarang(p1.GetBarang(1),1);
         g1.AddBarang(p1.GetBarang(2),3);
         g2.AddBarang(p2.GetBarang(0),1);
@@ -44,5 +46,23 @@ public class TubesPBOMantao {
         
         g1.ViewAllBarang();
         g2.ViewAllBarang();
+        
+        System.out.println("===================================================");
+        System.out.println("===================================================");
+        
+        p1.ViewAllBarang();
+        p2.ViewAllBarang();
+        
+        System.out.println("===================================================");
+        
+        g1.removeBarang(p1.GetBarang(0),1);
+        g2.removeBarang(p1.GetBarang(1),1);
+        g1.ViewAllBarang();
+        g2.ViewAllBarang();
+        
+        
+        p1.ViewAllBarang();
+        p2.ViewAllBarang();
+        
     }
 }
