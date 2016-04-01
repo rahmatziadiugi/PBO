@@ -96,4 +96,14 @@ public class Penyedia extends Orang{
         }
         System.out.println();
     }
+    
+    public void AddStockBarang(Barang b, int n){
+        for(Barang DaftarBarang1 : this.DaftarBarang){
+            if(DaftarBarang1.GetID().equals(b.GetID())){
+                DaftarBarang1.AddStock(n);
+                break;
+            }
+        }
+    }
+ 
 }
