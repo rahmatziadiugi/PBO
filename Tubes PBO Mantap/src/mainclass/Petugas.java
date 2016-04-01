@@ -21,11 +21,11 @@ public class Petugas extends Orang{
         this.NIP = NIP;
     }
     
-    public void setNIP(long NIP){
+    public void SetNIP(long NIP){
         this.NIP = NIP;
     }
     
-    public long getNIP(){
+    public long GetNIP(){
         return NIP;
     }
 }

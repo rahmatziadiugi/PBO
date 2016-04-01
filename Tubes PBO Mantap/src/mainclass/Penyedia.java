@@ -9,14 +9,91 @@ package mainclass;
  *
  * @author Someone-PC
  */
+
+import java.util.*;
+
 public class Penyedia extends Orang{
-    Barang[] daftarBarang;
+    private ArrayList<Barang> DaftarBarang;
+    private String ID;
     
-    public Penyedia(String name){
-        super(name);
+    public Penyedia(String Name, String ID){
+        super(Name);
+        this.DaftarBarang = new ArrayList<>();
+        this.ID = ID;
     }
     
-    public void createBarang(){
-        daftarBarang = new Barang[99];
+    public String GetID(){
+        return this.ID;
+    }
+
+    public void CreateBarang(String Jenis, String NamaBarang, int Stock, double Volume){
+        Barang b = new Barang(Jenis,NamaBarang,Stock,Volume);
+        this.DaftarBarang.add(b);
+        String id = this.ID.substring(0,3)+ Jenis.substring(0,1) + NamaBarang.substring(0,2);
+        this.DaftarBarang.get(this.DaftarBarang.indexOf(b)).SetID(id);
+    }
+    
+    public int GetIndexBarang(Barang b){
+        boolean found = false;
+        for(int i=0;i<this.DaftarBarang.size();i++){
+            if(this.DaftarBarang.get(i).GetID().equals(b.GetID())){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public Barang GetBarang(int i){
+        try{
+            return this.DaftarBarang.get(i);
+        }catch(Exception e){
+            System.out.println("Indeks salah");
+            return null;
+        }
+    }
+    
+    public void RemoveBarang(int indeks){
+        try{
+            this.DaftarBarang.remove(indeks);
+        }catch(Exception x){
+            System.out.println("Remove barang gagal");
+        }
+    }
+    
+    public void RemoveBarang(Barang b){
+        boolean found = false;
+        for(int i=0;i<this.DaftarBarang.size();i++){
+            if(this.DaftarBarang.get(i).GetID().equals(b.GetID())){
+                this.DaftarBarang.remove(i);
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("Remove barang gagal");
+        }
+    }
+    
+    public void RemoveAll(){
+        try{
+            this.DaftarBarang.clear();
+        }catch(NullPointerException e){
+            System.out.println("Daftar sudah kosong");
+        }catch(Exception e){
+            System.out.println("Remove semua barang gagal");
+        }
+    }
+    
+    public void ViewAllBarang(){
+        System.out.println("Nama\t: "+this.GetName());
+        System.out.println("ID\t: "+this.ID);
+        System.out.println("ID Barang\tBarang\t\tJenis\t\t\tStok");
+        for(int i=0;i<this.DaftarBarang.size();i++){
+            System.out.print(this.DaftarBarang.get(i).GetID()+"\t\t");
+            System.out.print(this.DaftarBarang.get(i).GetNama()+"\t\t");
+            System.out.print(this.DaftarBarang.get(i).GetJenis()+"\t\t");
+            System.out.print(this.DaftarBarang.get(i).GetStock());
+            System.out.println();
+        }
+        System.out.println();
     }
 }

@@ -9,62 +9,75 @@ package mainclass;
  *
  * @author Someone-PC
  */
+import java.util.*;
+
 public class Barang {
     private String IDBarang;
     private String Jenis;
     private String NamaBarang;
-    private int Stok;
+    private int Stock;
     private double Volume;
     
     public Barang(){
-        this.Stok = 0;
+        this.Stock = 0;
     }
     
-    public void setID(String ID){
-        this.IDBarang = ID;
+    public Barang(String Jenis, String NamaBarang, int Stock, double Volume){
+        this.Jenis = Jenis;
+        this.NamaBarang = NamaBarang;
+        this.Stock = Stock;
+        this.Volume = Volume;
     }
     
-    public void setJenis(String jenis){
-        this.Jenis = jenis;
+    public Barang(String IDBarang, String Jenis, String NamaBarang, int Stock, double Volume){
+        this.IDBarang = IDBarang;
+        this.Jenis = Jenis;
+        this.NamaBarang = NamaBarang;
+        this.Stock = Stock;
+        this.Volume = Volume;
     }
     
-    public void setNama(String nama){
-        this.NamaBarang = nama;
+    public void SetID(String IDBarang){
+        this.IDBarang = IDBarang;
+    }
+    
+    public void SetJenis(String Jenis){
+        this.Jenis = Jenis;
+    }
+    
+    public void SetNama(String Nama){
+        this.NamaBarang = Nama;
     }
         
-    public void setVolume(double v){
-        this.Volume = v;
+    public void SetVolume(double Volume){
+        this.Volume = Volume;
     }
     
-    public String getID(){
+    public String GetID(){
         return this.IDBarang;
     }
     
-    public String getJenis(){
+    public String GetJenis(){
         return this.Jenis;
     }
     
-    public String getNama(){
+    public String GetNama(){
         return this.NamaBarang;
     }
-    
-    
-    public int getStock(){
-        return this.Stok;
+        
+    public int GetStock(){
+        return this.Stock;
     }
     
-    public double getVolume(){
+    public double GetVolume(){
         return this.Volume;
     }
     
-    public void addStock(int n){
-        this.Stok = this.Stok + n;
+    public void AddStock(int n){
+        this.Stock = this.Stock + n;
     }
     
-    public void removeStock(int n){
-        //pengencekan supaya stok tidak minus
-        if((this.Stok-n)<0){
-            n=Stok;
-            this.Stok = 0;
-        }
+    public void RemoveStock(int n){
+        this.Stock = this.Stock - n;
+    }
 }

@@ -10,17 +10,17 @@ package mainclass;
  * @author Someone-PC
  */
 public abstract class Orang {
-    private String name;
+    private String Name;
     
-    public Orang(String name){
-        this.name = name;
+    public Orang(String Name){
+        this.Name = Name;
     }
     
-    public void setName(String name){
-        this.name = name;
+    public void SetName(String Name){
+        this.Name = Name;
     }
     
-    public String getname(){
-        return this.name;
+    public String GetName(){
+        return this.Name;
     }
 }
