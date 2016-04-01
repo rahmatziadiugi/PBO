@@ -105,5 +105,14 @@ public class Penyedia extends Orang{
             }
         }
     }
+    
+    public void RemoveStockBarang(Barang b, int n){
+        for(Barang DaftarBarang1 : this.DaftarBarang){
+            if(DaftarBarang1.GetID().equals(b.GetID())){
+                DaftarBarang1.RemoveStock(n);
+                break;
+            }
+        }
+    }
  
 }
