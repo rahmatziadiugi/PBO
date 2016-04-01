@@ -23,7 +23,7 @@ private stock t;
 
         
     public void login(){
-               
+        login
     }
     
     public void lupaPassword(){
@@ -72,11 +72,9 @@ private stock t;
     
     public void dataBarang() {
         for (gudang daftarGudang1:this.daftarGudang){
-            daftarGudang1.viewAllBarang;           
-       
+            daftarGudang1.viewAllBarang;
         }
     }
-    
     public void tambahGudang(gudang g){
         daftarGudang.addGudang(g);
     }
