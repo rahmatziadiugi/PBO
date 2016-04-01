@@ -61,15 +61,11 @@ public class Penyedia extends Orang{
     }
     
     public void RemoveBarang(Barang b){
-        boolean found = false;
-        for(int i=0;i<this.DaftarBarang.size();i++){
-            if(this.DaftarBarang.get(i).GetID().equals(b.GetID())){
-                this.DaftarBarang.remove(i);
+        for(Barang DaftarBarang1 : this.DaftarBarang){
+            if(DaftarBarang1.GetID().equals(b.GetID())){
+                this.DaftarBarang.remove(DaftarBarang1);
                 break;
             }
-        }
-        if(!found){
-            System.out.println("Remove barang gagal");
         }
     }
     
