@@ -1,12 +1,13 @@
 package mainclass;
 
 import java.util.ArrayList;
+import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainclass;
+
 
 /**
  *
@@ -21,13 +22,24 @@ public class Menu {
     private Penyedia s;
     private Gudang g;
     private Barang b;
+    private int JenisTotal;
+    private login l;
         
+    public class login { //inner class
+        scanner show = new System.in();
+        System.out.println("ID       : ");    
+        Id = show.next();
+        System.out.println("Password : ");
+        Id = show.next();
+        
+    }
     public void login(){
-        login
+        this.login.add(l);
+        
     }
     
     public void lupaPassword(){
-        
+        //belum dibikin classnya
     }
 
     public void AddPetugas(Petugas p){
@@ -86,6 +98,8 @@ public class Menu {
     }
     
     public void editGudang(Gudang g){
-        
+            this.DaftarGudang.remove(g);
+            this.DaftarGudang.add(g);
+        }
     }
 }
