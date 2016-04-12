@@ -10,22 +10,23 @@ package mainclass;
  * @author Someone-PC
  */
 public class Petugas extends Orang{
-    private long NIP;
+    private String NIP;
     
     public Petugas(String name){
         super(name);
     }
     
-    public Petugas(String name, long NIP){
+    public Petugas(String name, String NIP){
         super(name);
+        this.NIP = "P"+NIP;
+        this.SetUsername(NIP);
+    }
+    
+    public void SetNIP(String NIP){
         this.NIP = NIP;
     }
     
-    public void SetNIP(long NIP){
-        this.NIP = NIP;
-    }
-    
-    public long GetNIP(){
+    public String GetNIP(){
         return NIP;
     }
 }

@@ -16,8 +16,8 @@ public class TubesPBOMantao {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Penyedia p1 = new Penyedia("Riki","66613134");
-        Penyedia p2 = new Penyedia("Maru","99998887");
+        Penyedia p1 = new Penyedia("Riki","44");
+        Penyedia p2 = new Penyedia("Maru","55");
 
         p1.CreateBarang("Assault Rifle","AK-47",4,5);
         p1.CreateBarang("Assault Rifle","M4A1-S",3,5);

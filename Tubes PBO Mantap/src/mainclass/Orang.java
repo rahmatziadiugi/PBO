@@ -11,6 +11,9 @@ package mainclass;
  */
 public abstract class Orang {
     private String Name;
+    private String Username;
+    private String Password;
+    private int PIN;
     
     public Orang(String Name){
         this.Name = Name;
@@ -22,5 +25,29 @@ public abstract class Orang {
     
     public String GetName(){
         return this.Name;
+    }
+    
+    public void SetUsername(String username){
+        this.Username = username;
+    }
+    
+    public String GetUsername(){
+        return this.Username;
+    }
+    
+    public void SetPassword(String password){
+        this.Password = password;
+    }
+    
+    public String GetPassword(){
+        return this.Password;
+    }
+    
+    public void SetPIN(int pin){
+        this.PIN = pin;
+    }
+    
+    public int GetPIN(){
+        return this.PIN;
     }
 }

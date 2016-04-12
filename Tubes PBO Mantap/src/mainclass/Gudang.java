@@ -14,18 +14,15 @@ import java.util.ArrayList;
 public class Gudang {
     private ArrayList<Barang> DaftarBarang;
     private String IDGudang;
-    private String[] JenisBarang;
+    private String JenisBarang;
     private double VolumeMax;
     private double CurrentVolume;
-    private int JenisTotal;
     
     public Gudang(String IDGudang,double VolumeMax){
         this.IDGudang = IDGudang;
         this.VolumeMax = VolumeMax;
         this.CurrentVolume = 0;
-        this.JenisTotal = 0;
         this.DaftarBarang = new ArrayList<>();
-        this.JenisBarang = new String [3];
     }
     
     public void SetID(String ID){
@@ -37,20 +34,11 @@ public class Gudang {
     }
     
     public void SetJenis(String Jenis){
-        this.JenisBarang[this.JenisTotal] = Jenis;
-        this.JenisTotal++;
+        this.JenisBarang = Jenis;
     }
     
-    public void SetJenis(String Jenis, int i){
-        try{
-            this.JenisBarang[i] = Jenis;
-        }catch(Exception e){
-            System.out.println("Input tidak sesuai");
-        }
-    }
-    
-    public String GetJenis(int i){
-        return this.JenisBarang[i];
+    public String GetJenis(){
+        return this.JenisBarang;
     }
     
     public void SetVolume(double v){
@@ -62,22 +50,28 @@ public class Gudang {
     }
     
     public void AddBarang(Barang b, int n){
+        /*memasukkan barang ke gudang*/
         boolean found = false;
+        /*pengecekan barang udha ada atau belum
+        kalau sudah ada hanya penambahan stok*/
         for(Barang DaftarBarang1 : this.DaftarBarang){
-            if(DaftarBarang1.GetID().equals(b.GetID())){
+            if(DaftarBarang1.GetID()==b.GetID()){
                 DaftarBarang1.SetStock(DaftarBarang1.GetStock()-n);
                 found = true;
                 break;
             }
         }
+        /*kalau belum ada, membuat clone dari objek barang
+        namun dengan jumlah stok yang bisa berbeda jumlahnya*/
         if(!found){
             this.DaftarBarang.add(new Barang(b.GetID(),b.GetJenis(),b.GetNama(),n,b.GetVolume()));
         }
     }
     
     public void removeBarang(Barang b, int n){
+        /*mengurangi stok barang yang ada di gudang*/
         for(Barang DaftarBarang1 : this.DaftarBarang){
-            if(DaftarBarang1.GetID().equals(b.GetID())){
+            if(DaftarBarang1.GetID()==b.GetID()){
                 DaftarBarang1.SetStock(DaftarBarang1.GetStock()-n);
                 break;
             }
@@ -86,10 +80,7 @@ public class Gudang {
     
     public void ViewAllBarang(){
         System.out.println("ID Gudang\t: "+this.IDGudang);
-        System.out.println("Jenis Gudang\t: ");
-        for(int i=0;i<this.JenisTotal;i++){
-            System.out.println("\t"+(i+1)+". "+this.JenisBarang[i]);
-        }
+        System.out.print("Jenis Gudang\t: "+this.JenisBarang);
         System.out.println("ID Barang\tBarang\t\tJenis\t\t\tStok");
         for (Barang DaftarBarang1 : this.DaftarBarang) {
             System.out.print(DaftarBarang1.GetID() + "\t\t");
