@@ -19,6 +19,7 @@ public class Menu {
     private ArrayList<Gudang> DaftarGudang = new ArrayList<>();
     private Petugas p;
     private Penyedia s;
+    private int login;
     Scanner input = new Scanner (System.in);
         
     public void login(){
@@ -35,6 +36,7 @@ public class Menu {
                 for(Penyedia s : this.DaftarPenyedia){
                     if(s.GetUsername()==id && s.GetPassword()==pw){
                         this.s = s;
+                        this.login = 2;
                         login = true;
                     }
                 }
@@ -43,12 +45,14 @@ public class Menu {
                 for(Petugas p : this.DaftarPetugas){
                     if(p.GetUsername()==id && p.GetPassword()==pw){
                         this.p = p;
+                        this.login = 1;
                         login = true;
                     }
                 }
                 break;
             case "admin":
                 if(pw=="admin"){
+                    this.login = 0;
                     login = true;
                 }
             default:
