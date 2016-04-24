@@ -38,12 +38,20 @@ public class ControllerAdminAGudang implements ActionListener {
                     + view.gettxtSlot() + "')") >= 1)
                 {
                     JOptionPane.showMessageDialog(null,"Berhasil menambahkan gudang baru!");
+                    view.reset();
                 } else{
                     JOptionPane.showMessageDialog(null,"Gudang sudah terdaftar!");
+                    view.reset();
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Gagal!");
             }
+            view.reset();
+        } else if(source.equals(view.getbtnCancel())){
+            db.disconnect();
+            ControllerAdmin adm = new ControllerAdmin();
+            view.reset();
+            view.dispose();
         }        
     }
     

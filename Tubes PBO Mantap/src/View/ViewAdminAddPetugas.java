@@ -38,7 +38,7 @@ public class ViewAdminAddPetugas extends javax.swing.JFrame {
         txtNama = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
-        txtPassword = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,8 +64,6 @@ public class ViewAdminAddPetugas extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-
-        txtPassword.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,7 +193,7 @@ public class ViewAdminAddPetugas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtNama;
-    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

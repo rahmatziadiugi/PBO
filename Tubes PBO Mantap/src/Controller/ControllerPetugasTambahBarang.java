@@ -39,9 +39,9 @@ public class ControllerPetugasTambahBarang implements ActionListener {
         view.setVisible(true);
         view.addListener(this);
     }
+    
     @Override
-    public void actionPerformed(ActionEvent e) {
-                
+    public void actionPerformed(ActionEvent e) {                
         db.connect();
         Object source = e.getSource();
         if(source.equals(view.getBtnTambah())) {
@@ -96,10 +96,10 @@ public class ControllerPetugasTambahBarang implements ActionListener {
                                 + id_gudang + "';");
                         db.disconnect();
                         JOptionPane.showMessageDialog(null,"Barang berhasil ditambah!");
-                        ControllerPetugasUtama pu = new ControllerPetugasUtama();
-                        view.dispose();
+                        view.reset();
                     } else{
                         JOptionPane.showMessageDialog(null,"Gagal Menambahkan!");
+                        view.reset();
                     }
                 } else{
                     JOptionPane.showMessageDialog(null,"Stock tidak cukup!");
@@ -109,10 +109,11 @@ public class ControllerPetugasTambahBarang implements ActionListener {
                 view.reset();
             }
         } else if (source.equals(view.getBtnCancel())) {
+            db.disconnect();
+            view.reset();
             ControllerPetugasUtama pu = new ControllerPetugasUtama();
             view.dispose();
         }
-        db.disconnect();
     }
     
 }

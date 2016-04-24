@@ -39,22 +39,19 @@ public class ControllerAdminAPetugas implements ActionListener {
                         + view.getTxtPassword() + "', '1')") >= 1)
                 {
                     JOptionPane.showMessageDialog(null,"Berhasil menambahkan Petugas baru!");
-                    view.reset();
-                    view.dispose();
                 } else{
                     JOptionPane.showMessageDialog(null,"Petugas sudah terdaftar!");
-                    view.reset();
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Gagal!");
-                view.reset();
             }
+            view.reset();
         } else if(source.equals(view.getbtnCancel())){
-            ControllerPenyediaUtama pu = new ControllerPenyediaUtama();
+            db.disconnect();
+            ControllerAdmin adm = new ControllerAdmin();
             view.reset();
             view.dispose();
         }
-        db.disconnect();
     }
     
 }

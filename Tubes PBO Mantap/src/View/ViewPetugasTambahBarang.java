@@ -142,8 +142,7 @@ public class ViewPetugasTambahBarang extends javax.swing.JFrame {
     }
     
     public int getJumlah() {
-        int x = (int) txJumlah.getValue();
-        return x;
+        return (int) txJumlah.getValue();
     }
     
     public void resetJum(){

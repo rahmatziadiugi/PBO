@@ -38,13 +38,23 @@ public class ControllerAdminEGudang implements ActionListener {
                         + view.getStock() + "' WHERE `daftargudang`.`id_gudang` = '"
                         + view.getIDGudang() +"'") >= 1)
                 {
-                    JOptionPane.showMessageDialog(null,"Berhasil menambahkan gudang baru!");
+                    JOptionPane.showMessageDialog(null,"Berhasil mengedit gudang !");
+                    db.disconnect();
+                    view.reset();
+                    ControllerAdmin adm = new ControllerAdmin();                    
+                    view.dispose();
                 } else{
-                    JOptionPane.showMessageDialog(null,"Gudang sudah terdaftar!");
+                    JOptionPane.showMessageDialog(null,"ID Gudang salah!");
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Gagal!");
             }
-        }        
+            view.reset();
+        } else if(source.equals(view.getBtnCancel())){
+            db.disconnect();
+            view.reset();
+            ControllerAdmin adm = new ControllerAdmin();            
+            view.dispose();
+        }
     }
 }

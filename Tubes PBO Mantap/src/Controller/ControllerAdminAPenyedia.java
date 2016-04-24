@@ -39,22 +39,19 @@ public class ControllerAdminAPenyedia implements ActionListener {
                         + view.getTxtUsername() + "', '"
                         + view.getTxtPassword() + "', '2')") >= 1)
                 {
-                    JOptionPane.showMessageDialog(null,"Berhasil menambahkan Penyedia baru!");
-                    view.reset();
-                    view.dispose();
+                    JOptionPane.showMessageDialog(null,"Berhasil menambahkan Penyedia baru!");                    
                 } else{
                     JOptionPane.showMessageDialog(null,"Penyedia sudah terdaftar!");
-                    view.reset();
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Gagal!");
-                view.reset();
             }
+            view.reset();
         } else if(source.equals(view.getbtnCancel())){
-            ControllerPenyediaUtama pu = new ControllerPenyediaUtama();
+            db.disconnect();
+            ControllerAdmin adm = new ControllerAdmin();
             view.reset();
             view.dispose();
         }
-        db.disconnect();
     }    
 }

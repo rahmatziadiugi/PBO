@@ -99,11 +99,11 @@ public class ViewAdminRemovePenyedia extends javax.swing.JFrame {
         return btnCancel;
     }
     
-    public void setTxtIDGudang(String s) {
+    public void setTxtNIPPenyedia(String s) {
         txtNIP.setText(s);
     }
     
-    public String getTxtIDGudang() {
+    public String getTxtNIPPenyedia() {
         return txtNIP.getText();
     }
     

@@ -23,7 +23,6 @@ public class ViewPetugasRemoveBarang extends javax.swing.JFrame {
      */
     public ViewPetugasRemoveBarang() {
         initComponents();
-        setHeader();
     }
 
     /**
@@ -35,75 +34,88 @@ public class ViewPetugasRemoveBarang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelBarang = new javax.swing.JTable();
-        txNomorBarang = new javax.swing.JTextField();
+        txtIDBarang = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnHapus = new javax.swing.JButton();
         btnCancel = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtJumlah = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        txtIDGudang = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabelBarang.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+        jLabel1.setText("ID Barang");
 
+        btnHapus.setText("Keluarkan");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tabelBarang);
-
-        jLabel1.setText("Masukkan nomor barang");
-
-        btnHapus.setText("Hapus");
+        });
 
         btnCancel.setText("Cancel");
+
+        jLabel2.setText("Jumlah");
+
+        txtJumlah.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+
+        jLabel3.setText("ID Gudang");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(btnHapus)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCancel))
-                            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnCancel)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnHapus)
+                            .addGap(149, 149, 149))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txNomorBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                                .addComponent(jLabel2))
+                            .addGap(36, 36, 36)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtIDBarang)
+                                .addComponent(txtJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtIDGudang)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txNomorBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHapus)
-                    .addComponent(btnCancel))
-                .addGap(66, 66, 66))
+                    .addComponent(txtIDBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtIDGudang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(btnHapus)
+                .addGap(8, 8, 8)
+                .addComponent(btnCancel)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHapusActionPerformed
 
     public JToggleButton getBtnCancel() {
         return btnCancel;
@@ -118,40 +130,51 @@ public class ViewPetugasRemoveBarang extends javax.swing.JFrame {
         btnHapus.addActionListener(e);
     }
 
-    public void setNomorBarang(String s) {
-        txNomorBarang.setText(s);
+    public void setIDBarang(String s) {
+        txtIDBarang.setText(s);
     }
     
-    public int getNomorBarang() {
-        int x = Integer.parseInt(txNomorBarang.getText());
+    public int getIDBarang() {
+        int x = Integer.parseInt(txtIDBarang.getText());
         return x;
     }
-    
-        public void setHeader() {
-        String[] header = {"No","Id Barang","Nama Barang","Jenis Barang","Stock"};
-        DefaultTableModel model = new DefaultTableModel(null, header);
-        tabelBarang.setModel(model);
+          
+    public void setStock(int i) {
+        txtJumlah.setValue(i);
     }
     
-    public void inputData(ArrayList<Barang> listBarang) {
-        DefaultTableModel model = (DefaultTableModel)tabelBarang.getModel();
-        if (listBarang != null) {
-            for (int i = 0; i < listBarang.size(); i++) {
-                model.addRow(new String[] {(i+1)+"",listBarang.get(i).getIdBarang()
-                ,listBarang.get(i).getNamaBarang(),listBarang.get(i).getJenisBarang()
-                ,listBarang.get(i).getStock()+""});
-            }
-        }
-        else {
-            model.addRow(new String[] {"","","","",""});
-        }
+    public int getJumlah() {
+        return (int) txtJumlah.getValue();
     }
+    
+    
+    public void setGudang(String s) {
+        txtIDGudang.setText(s);
+    }
+        
+    public String getGudang() {
+        return txtIDGudang.getText();
+    }
+    
+    
+    public void resetJum(){
+        txtJumlah.setValue(1);
+    }
+    
+    public void reset(){
+        txtIDBarang.setText(null);
+        txtJumlah.setValue(1);
+        txtIDGudang.setText(null);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCancel;
     private javax.swing.JButton btnHapus;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelBarang;
-    private javax.swing.JTextField txNomorBarang;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField txtIDBarang;
+    private javax.swing.JTextField txtIDGudang;
+    private javax.swing.JSpinner txtJumlah;
     // End of variables declaration//GEN-END:variables
 }
