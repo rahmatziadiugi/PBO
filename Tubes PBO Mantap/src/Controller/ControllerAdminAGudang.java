@@ -20,7 +20,13 @@ public class ControllerAdminAGudang implements ActionListener {
     private ViewAdminAddGudang view;
     private AplikasiInventaris app;
     Database db = new Database();
-
+    
+    public ControllerAdminAGudang() {
+        view = new ViewAdminAddGudang();
+        view.setVisible(true);
+        view.addListener(this);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         db.connect();

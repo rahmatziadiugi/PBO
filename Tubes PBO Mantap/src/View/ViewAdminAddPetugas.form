@@ -41,11 +41,11 @@
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="47" max="32767" attributes="0"/>
+                              <EmptySpace pref="75" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="112" max="32767" attributes="0"/>
+                                      <EmptySpace pref="139" max="32767" attributes="0"/>
                                       <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -113,12 +113,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tempat Tanggal Lahir"/>
+        <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Jenis Kelamin"/>
+        <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAdd">

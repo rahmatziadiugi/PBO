@@ -133,11 +133,11 @@ public class ViewAdminAddPenyedia extends javax.swing.JFrame {
      */
     
     public JButton getbtnAdd() {
-        return btnCancel;
+        return btnAdd;
     }
     
     public JButton getbtnCancel() {
-        return btnAdd;
+        return btnCancel;
     }
     
     public void setTxtNama(String s) {

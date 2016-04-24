@@ -5,18 +5,56 @@
  */
 package Controller;
 
+import Database.Database;
+import Model.AplikasiInventaris;
+import View.ViewAdminAddPetugas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Someone-PC
  */
 public class ControllerAdminAPetugas implements ActionListener {
+    private ViewAdminAddPetugas view;
+    private AplikasiInventaris app;
+    Database db = new Database();
+    
+    public ControllerAdminAPetugas() {
+        view = new ViewAdminAddPetugas();
+        view.setVisible(true);
+        view.addListener(this);
+    }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        db.connect();
+        Object source = ae.getSource();
+        if(source.equals(view.getbtnAdd())) {
+            try{
+                if(db.manipulate("INSERT INTO `daftarorang` (`id`, `nama`, `username`, `password`, `job`) VALUES (NULL, '"
+                        + view.getTxtNama()+ "', '"
+                        + view.getTxtUsername() + "', '"
+                        + view.getTxtPassword() + "', '1')") >= 1)
+                {
+                    JOptionPane.showMessageDialog(null,"Berhasil menambahkan Petugas baru!");
+                    view.reset();
+                    view.dispose();
+                } else{
+                    JOptionPane.showMessageDialog(null,"Petugas sudah terdaftar!");
+                    view.reset();
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,"Gagal!");
+                view.reset();
+            }
+        } else if(source.equals(view.getbtnCancel())){
+            ControllerPenyediaUtama pu = new ControllerPenyediaUtama();
+            view.reset();
+            view.dispose();
+        }
+        db.disconnect();
     }
     
 }

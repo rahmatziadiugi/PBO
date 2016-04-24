@@ -30,10 +30,10 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txNamaBarang = new javax.swing.JTextField();
+        txIDGudang = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnTambah = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         txStock = new javax.swing.JSpinner();
 
@@ -43,7 +43,12 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
 
         jLabel3.setText("Slot");
 
-        btnTambah.setText("Tambah");
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
 
@@ -54,8 +59,8 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
-                .addComponent(btnTambah)
+                .addContainerGap(192, Short.MAX_VALUE)
+                .addComponent(btnEdit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel)
                 .addGap(86, 86, 86))
@@ -67,7 +72,7 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txStock, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                    .addComponent(txNamaBarang))
+                    .addComponent(txIDGudang))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -75,7 +80,7 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txIDGudang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -83,7 +88,7 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTambah)
+                    .addComponent(btnEdit)
                     .addComponent(btnCancel))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
@@ -91,29 +96,33 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditActionPerformed
+
     public JButton getBtnCancel() {
         return btnCancel;
     }
 
-    public JButton getBtnTambah() {
-        return btnTambah;
+    public JButton getBtnEdit() {
+        return btnEdit;
     }
     
     public void addListener(ActionListener e) {
-        btnTambah.addActionListener(e);
+        btnEdit.addActionListener(e);
         btnCancel.addActionListener(e);
     }
     
     public void setNamaBarang(String s) {
-        txNamaBarang.setText(s);
+        txIDGudang.setText(s);
     }
         
     public void setStock(int i) {
         txStock.setValue(i);
     }
     
-    public String getNamaBarang() {
-        return txNamaBarang.getText();
+    public String getIDGudang() {
+        return txIDGudang.getText();
     }
     
 
@@ -123,7 +132,7 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
     }
     
     public void reset(){
-        txNamaBarang.setText(null);
+        txIDGudang.setText(null);
         txStock.setValue(0);
     }
     
@@ -134,10 +143,10 @@ public class ViewAdminEditGudang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnTambah;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txNamaBarang;
+    private javax.swing.JTextField txIDGudang;
     private javax.swing.JSpinner txStock;
     // End of variables declaration//GEN-END:variables
 }

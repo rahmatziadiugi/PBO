@@ -44,15 +44,17 @@ public class ControllerAdminAPenyedia implements ActionListener {
                     view.dispose();
                 } else{
                     JOptionPane.showMessageDialog(null,"Penyedia sudah terdaftar!");
+                    view.reset();
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Gagal!");
+                view.reset();
             }
         } else if(source.equals(view.getbtnCancel())){
             ControllerPenyediaUtama pu = new ControllerPenyediaUtama();
+            view.reset();
             view.dispose();
         }
         db.disconnect();
-    }
-    
+    }    
 }

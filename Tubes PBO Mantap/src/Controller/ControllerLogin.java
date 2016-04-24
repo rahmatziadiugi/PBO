@@ -35,9 +35,9 @@ public class ControllerLogin implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        db.connect();
         Object source = e.getSource();
         if(source.equals(view.getBtnLogin())) {
+            db.connect();
             ResultSet rs = db.get("select * from daftarorang where username='" + view.getUsername() + "'");
             try {
                 if(rs.first()){
@@ -53,7 +53,6 @@ public class ControllerLogin implements ActionListener {
                                 ControllerPenyediaUtama pu = new ControllerPenyediaUtama();
                                 break;
                         }
-                        db.disconnect();
                         view.resetall();
                         view.dispose();                 
                     } else{
@@ -67,7 +66,7 @@ public class ControllerLogin implements ActionListener {
                 rs.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
-            }      
+            }
             db.disconnect();
         }
     }
