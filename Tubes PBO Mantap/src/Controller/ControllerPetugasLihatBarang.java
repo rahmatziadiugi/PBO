@@ -5,10 +5,15 @@
  */
 package Controller;
 
+import DB.Database;
 import Model.AplikasiInventaris;
 import View.ViewPetugasLihatBarang;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,14 +22,14 @@ import java.awt.event.ActionListener;
 public class ControllerPetugasLihatBarang implements ActionListener {
     private ViewPetugasLihatBarang view;
     private AplikasiInventaris app;
+    Database db;
     
     public ControllerPetugasLihatBarang() {
         app = new AplikasiInventaris();
         view = new ViewPetugasLihatBarang();
+        view.setTableMenu();
         view.setVisible(true);
         view.addListener(this);
-        System.out.println(app.getGudang().getDaftarBarang().isEmpty());
-        view.viewAll(app.getGudang().getDaftarBarang());
     }
     
     @Override

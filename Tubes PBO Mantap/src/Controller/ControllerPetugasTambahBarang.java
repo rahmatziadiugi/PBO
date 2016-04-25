@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Database.Database;
+import DB.Database;
 import Model.AplikasiInventaris;
 import Model.Barang;
 import View.ViewPetugasTambahBarang;
@@ -76,15 +76,15 @@ public class ControllerPetugasTambahBarang implements ActionListener {
             
             if(id!= null && id_gudang!=null){
                 if(stock >= view.getJumlah()){
-                    if(db.manipulate("INSERT INTO daftarbaranggudang "
-                        + "(idBarang, namaBarang, jenisBarang, stock, id_penyedia, id_gudang)"
-                        + " VALUES ('"
-                        + id + "','"
-                        + nama + "','"
-                        + jenis + "',"
-                        + view.getJumlah() + ","
-                        + id_penyedia + ",'"
-                        + id_gudang + "')") >= 1)
+                    if(db.manipulate("INSERT INTO `daftarbaranggudang` "
+                        + "(`id`, `namaBarang`, `jenisBarang`, `stock`, `id_penyedia`, `id_gudang`) "
+                        + "VALUES ('"
+                        + id + "', '"
+                        + nama + "', '"
+                        + jenis + "', '"
+                        + view.getJumlah() + "', '"
+                        + id_penyedia + "', '"
+                        + view.getGudang() + "')") >= 1)
                     {
                         int sisa = (stock-view.getJumlah());
                         db.manipulate("UPDATE daftarbarangpenyedia SET stock = " 

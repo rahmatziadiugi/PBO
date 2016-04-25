@@ -5,10 +5,17 @@
  */
 package View;
 
+import DB.Database;
+import Model.AplikasiInventaris;
 import Model.Barang;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,49 +40,49 @@ public class ViewPetugasLihatBarang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelBarang = new javax.swing.JTable();
         btnKembali = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableBarangGudang = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabelBarang.setModel(new javax.swing.table.DefaultTableModel(
+        btnKembali.setText("Kembali");
+
+        TableBarangGudang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "ID Gudang", "ID Barang", "Nama Barang", "Jumlah"
             }
         ));
-        jScrollPane1.setViewportView(tabelBarang);
-
-        btnKembali.setText("Kembali");
+        jScrollPane1.setViewportView(TableBarangGudang);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(btnKembali)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 443, Short.MAX_VALUE)
+                        .addComponent(btnKembali))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKembali)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,33 +95,24 @@ public class ViewPetugasLihatBarang extends javax.swing.JFrame {
     public void addListener(ActionListener e) {
         btnKembali.addActionListener(e);
     }
-
-    public void viewAll(ArrayList<Barang> listBarang) {
-        String[] header = {"No", "Id Barang", "Nama Barang", "Jenis Barang", "Stock"};
-        String[][] data = new String[listBarang.size()][5];
-        for (int i = 0; i < listBarang.size(); i++) {
-            Barang b = listBarang.get(i);
-            data[i][0] = String.valueOf(i+1);
-            data[i][1] = b.getIdBarang();
-            data[i][2] = b.getNamaBarang();
-            data[i][3] = b.getJenisBarang();
-            data[i][4] = String.valueOf(b.getStock());
+    
+    public void setTableMenu(){
+        String s=null;
+        app.getArray();
+        TableBarangGudang.setSize(100, 100);
+        for(int i=0; i<app.ListBrg.size(); i++){
+            TableBarangGudang.setValueAt(app.ListGudang.get(i).getIdGudang(), i, 0);
+            TableBarangGudang.setValueAt(app.ListBrg.get(i).getIdBarang(), i, 1);
+            TableBarangGudang.setValueAt(app.ListBrg.get(i).getNamaBarang(), i, 2);
+            TableBarangGudang.setValueAt(app.ListBrg.get(i).getStock(), i, 3);
         }
-        tabelBarang.setModel(new DefaultTableModel(data,header));
     }
+    
+    private AplikasiInventaris app = new AplikasiInventaris();
 
-//    public static void setListBarang(ArrayList<Barang> barang) {
-//        listBarang = barang;
-//    }
-//
-//    public static ArrayList<Barang> getListBarang() {
-//        return listBarang;
-//    }
-//
-//    private static ArrayList<Barang> listBarang;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableBarangGudang;
     private javax.swing.JButton btnKembali;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelBarang;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Database.Database;
+import DB.Database;
 import Model.AplikasiInventaris;
 import View.ViewAdminRemovePetugas;
 import java.awt.event.ActionEvent;

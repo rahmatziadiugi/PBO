@@ -25,7 +25,6 @@ public class ControllerPenyediaViewBarang implements ActionListener {
         view = new ViewPenyediaViewBarang();
         view.setVisible(true);
         view.addListener(this);
-        view.inputData(app.getPenyedia().getDaftarBarang());
     }
             
     @Override

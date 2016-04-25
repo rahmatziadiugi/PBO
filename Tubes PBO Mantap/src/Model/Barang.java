@@ -33,6 +33,10 @@ public class Barang {
     public static void setCount(int count) {
         Barang.count = count;
     }
+    
+    public static void incCount(){
+        Barang.count++;
+    }
 
     public String getIdBarang() {
         return this.idBarang;

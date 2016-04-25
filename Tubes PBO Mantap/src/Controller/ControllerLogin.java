@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Database.Database;
+import DB.Database;
 import Model.AplikasiInventaris;
 import View.Login;
 import java.awt.event.ActionEvent;
@@ -50,6 +50,7 @@ public class ControllerLogin implements ActionListener {
                                 ControllerPetugasUtama pu1 = new ControllerPetugasUtama();
                                 break;
                             case 2 : 
+                                app.setId(rs.getInt("id"));
                                 ControllerPenyediaUtama pu = new ControllerPenyediaUtama();
                                 break;
                         }

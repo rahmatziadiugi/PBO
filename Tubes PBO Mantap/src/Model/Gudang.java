@@ -23,6 +23,10 @@ public class Gudang {
         this.idGudang = idGudang;
         this.volumeMaxGudang = volumeMaxGudang;
     }
+
+    Gudang(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
 

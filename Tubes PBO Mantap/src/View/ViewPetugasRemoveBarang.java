@@ -134,9 +134,8 @@ public class ViewPetugasRemoveBarang extends javax.swing.JFrame {
         txtIDBarang.setText(s);
     }
     
-    public int getIDBarang() {
-        int x = Integer.parseInt(txtIDBarang.getText());
-        return x;
+    public String getIDBarang() {
+        return txtIDBarang.getText();
     }
           
     public void setStock(int i) {
@@ -145,8 +144,7 @@ public class ViewPetugasRemoveBarang extends javax.swing.JFrame {
     
     public int getJumlah() {
         return (int) txtJumlah.getValue();
-    }
-    
+    }    
     
     public void setGudang(String s) {
         txtIDGudang.setText(s);

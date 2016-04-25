@@ -6,7 +6,7 @@
 package Driver;
 
 import Controller.ControllerLogin;
-import Database.Database;
+import DB.Database;
 import Model.AplikasiInventaris;
 import Model.Barang;
 import java.sql.ResultSet;
@@ -23,7 +23,9 @@ public class Driver {
         ResultSet rs = db.get("SELECT * FROM `daftarbarangpenyedia`");
         Barang b = null;
         if(rs.last()){
-            b.setStock(rs.getRow()+1);
+            for(int i = 0; i<rs.getRow();i++){
+                Barang.incCount();
+            }            
         }
         db.disconnect();
         

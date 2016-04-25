@@ -5,12 +5,15 @@
  */
 package Controller;
 
-import Database.Database;
+import DB.Database;
 import Model.AplikasiInventaris;
 import View.ViewPetugasRemoveBarang;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,10 +41,12 @@ public class ControllerPetugasRemoveBarang implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        boolean a = false; //cek gagal di barang
+        boolean b = false; //cek gagal di gudang
         db.connect();
         Object source = e.getSource();
         if(source.equals(view.getBtnHapus())) {
-            ResultSet rs = db.get("select * from daftarbarangpenyedia where idBarang = '" + view.getIDBarang() + "'");
+            ResultSet rs = db.get("SELECT * FROM `daftarbarangpenyedia` WHERE `idBarang` = '" + view.getIDBarang() + "'");
             try {                
                 if(rs.first()){
                     id = rs.getString("idbarang");
@@ -49,39 +54,31 @@ public class ControllerPetugasRemoveBarang implements ActionListener {
                     jenis = rs.getString("jenisbarang");
                     id_penyedia = rs.getInt("id_penyedia");
                     stock = rs.getInt("stock");
-                    rs.close();
+                    a = !a;
                 } else{
                     JOptionPane.showMessageDialog(null,"ID barang salah!");
                 }
+                rs.close();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Gagal");
+                JOptionPane.showMessageDialog(null,"Gagal di Barang!");
             }
-            
-            rs = db.get("SELECT * FROM daftargudang WHERE id_gudang = '" + view.getGudang() + "'");
+            rs = db.get("SELECT * FROM `daftargudang` WHERE `id_gudang` = '" + view.getGudang() + "'");
             try {            
                 if(rs.first()){
                     id_gudang = rs.getString("id_gudang");
                     slot = rs.getInt("slot");
-                    rs.close();
+                    b = !b;
                 }else{
                     JOptionPane.showMessageDialog(null,"ID gudang salah!");
                 }
+                rs.close();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Gagal!");
+                JOptionPane.showMessageDialog(null,"Gagal di Gudang!");
             }
             
             if(id!= null && id_gudang!=null){
-                if(stock >= view.getJumlah()){
-                    if(db.manipulate("INSERT INTO daftarbaranggudang "
-                        + "(idBarang, namaBarang, jenisBarang, stock, id_penyedia, id_gudang)"
-                        + " VALUES ('"
-                        + id + "','"
-                        + nama + "','"
-                        + jenis + "',"
-                        + view.getJumlah() + ","
-                        + id_penyedia + ",'"
-                        + id_gudang + "')") >= 1)
-                    {
+                if((stock >= view.getJumlah()) && (slot>=view.getJumlah())){
+                    if(a==b){
                         int sisa = (stock+view.getJumlah());
                         db.manipulate("UPDATE daftarbarangpenyedia SET stock = " 
                                 + sisa + " WHERE daftarbarangpenyedia.idBarang = '"
@@ -90,13 +87,31 @@ public class ControllerPetugasRemoveBarang implements ActionListener {
                         db.manipulate("UPDATE daftargudang SET slot = " 
                                 + sisa + " WHERE daftargudang.id_gudang = '"
                                 + id_gudang + "';");
+                        rs = db.get("SELECT * FROM `daftarbaranggudang` WHERE `id` = '"
+                                + view.getIDBarang() + "' AND `id_gudang` = '" + view.getGudang() + "'");
+                        try {
+                            if(rs.first()){
+                                stock = rs.getInt("stock");                                
+                            }
+                        } catch (SQLException ex) {
+                            Logger.getLogger(ControllerPetugasRemoveBarang.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        sisa = stock-view.getJumlah();                        
+                        db.manipulate("UPDATE `daftarbaranggudang` SET `stock` = '"
+                                + sisa + "' WHERE `daftarbaranggudang`.`id` = '"
+                                + view.getIDBarang() + "' AND `daftarbaranggudang`.`id_gudang` = '"
+                                + view.getGudang() + "';");
+                        if(sisa==0){
+                            db.manipulate("DELETE FROM `daftarbaranggudang` WHERE `daftarbaranggudang`.`id` = '"
+                                + view.getIDBarang() +"' AND `daftarbaranggudang`.`id_gudang` = '"
+                                + view.getGudang() + "';");
+                        }
                         db.disconnect();
                         JOptionPane.showMessageDialog(null,"Barang berhasil dikeluarkan!");
-                        view.reset();
+                        view.reset();  
                     } else{
-                        JOptionPane.showMessageDialog(null,"Gagal mengeluarkan!");
-                        view.reset();
-                    }
+                        view.reset();   
+                    }                   
                 } else{
                     JOptionPane.showMessageDialog(null,"Stock tidak cukup!");
                     view.resetJum();

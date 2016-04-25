@@ -5,11 +5,10 @@
  */
 package Controller;
 
-import Database.Database;
+import DB.Database;
 import Model.AplikasiInventaris;
 import Model.Barang;
 import View.ViewPenyediaCreateBarang;
-import View.ViewPenyediaViewBarang;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -37,16 +36,15 @@ public class ControllerPenyediaCreateBarang implements ActionListener {
         Object source = e.getSource();
         if(source.equals(view.getBtnTambah())) {
             db.connect();
-            app.getPenyedia().createBarang(view.getNamaBarang().toUpperCase(), view.getJenisBarang(), view.getStock());
-            Barang b = app.getPenyedia().getBarang(app.getPenyedia().sizeBarang()-1);
             try {
-                if(db.manipulate("INSERT INTO `daftarbarangpenyedia` (`idBarang`, `namaBarang`, `jenisBarang`, `stock`, `id_penyedia`) VALUES ('"
-                    + b.getIdBarang() + "', '"
-                    + b.getNamaBarang() + "', '"
-                    + b.getJenisBarang() + "', "
-                    + b.getStock() + ", "
-                    + app.getPenyedia().getId() + ")") >= 1)
+                if(db.manipulate("INSERT INTO `daftarbarangpenyedia` (`idBarang`, `namaBarang`, `jenisBarang`, `stock`, `id_penyedia`) VALUES ('INV"
+                    + Barang.getCount() + view.getNamaBarang().substring(0,3) + "', '"
+                    + view.getNamaBarang() + "', '"
+                    + view.getJenisBarang() + "', '"
+                    + view.getStock() + "', '"
+                    + app.getId() + "')") >= 1)
                 {
+                    Barang.incCount();
                     JOptionPane.showMessageDialog(null,"Barang berhasil ditambah!");
                 } else{
                     JOptionPane.showMessageDialog(null,"Barang sudah terdaftar!");
