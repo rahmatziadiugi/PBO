@@ -24,20 +24,13 @@ public class Gudang {
         this.volumeMaxGudang = volumeMaxGudang;
     }
 
-    Gudang(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-
-
     public void addBarang(Barang b) {
         if ((volumeMaxGudang-nVolumeGudang) >= b.getStock()) {
             daftarBarang.add(b);
             nVolumeGudang+=b.getStock();
         } else {
             System.out.println("Gudang sudah penuh !");
-        }
-        
+        }        
     }
 
     public void removeBarang(int indeks) {

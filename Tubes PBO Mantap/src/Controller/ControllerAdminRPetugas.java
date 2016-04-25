@@ -25,6 +25,7 @@ public class ControllerAdminRPetugas implements ActionListener {
         view = new ViewAdminRemovePetugas();
         view.setVisible(true);
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Admin");
     }
     
     @Override

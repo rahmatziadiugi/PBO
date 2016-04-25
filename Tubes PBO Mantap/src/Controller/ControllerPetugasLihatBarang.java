@@ -30,6 +30,7 @@ public class ControllerPetugasLihatBarang implements ActionListener {
         view.setTableMenu();
         view.setVisible(true);
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Petugas");
     }
     
     @Override
@@ -38,6 +39,10 @@ public class ControllerPetugasLihatBarang implements ActionListener {
         if (source.equals(view.getBtnKembali())) {
             ControllerPetugasUtama pu = new ControllerPetugasUtama();
             view.dispose();
+        } else if(source.equals(view.getFind())){
+            view.setTableMenuGudangKhusus();
+        } else if(source.equals(view.getAll())){
+            view.setTableMenu();
         }
     }
     

@@ -20,6 +20,7 @@ public class ControllerPenyediaUtama implements ActionListener {
         view = new ViewPenyediaUtama();
         view.setVisible(true);
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Supplier");
     }
     
     @Override
@@ -32,7 +33,7 @@ public class ControllerPenyediaUtama implements ActionListener {
             ControllerPenyediaViewBarang ptt = new ControllerPenyediaViewBarang();
             view.dispose();
         } else if (source.equals(view.getbtnAddStock())) {
-            ControllerPenyediaViewBarang ptt = new ControllerPenyediaViewBarang();
+            ControllerPenyediaAddStock pat = new ControllerPenyediaAddStock();
             view.dispose();
         } else if (source.equals(view.getBtnLogout())) {
             ControllerLogin login = new ControllerLogin();

@@ -5,10 +5,12 @@
  */
 package View;
 
+import Model.AplikasiInventaris;
 import Model.Barang;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,7 +24,6 @@ public class ViewPenyediaViewBarang extends javax.swing.JFrame {
      */
     public ViewPenyediaViewBarang() {
         initComponents();
-        setHeader();
     }
 
     /**
@@ -36,27 +37,51 @@ public class ViewPenyediaViewBarang extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelBarang = new javax.swing.JTable();
-        btnCancel = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtFind = new javax.swing.JTextField();
+        btnFind = new javax.swing.JButton();
+        btnAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabelBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "ID Barang", "Nama Barang", "Jenis", "Stock"
             }
         ));
         jScrollPane1.setViewportView(tabelBarang);
 
-        btnCancel.setText("Back");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Cari Barang");
+
+        jLabel2.setText("ID Barang");
+
+        btnFind.setText("Find");
+        btnFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindActionPerformed(evt);
+            }
+        });
+
+        btnAll.setText("View All");
+        btnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllActionPerformed(evt);
             }
         });
 
@@ -69,70 +94,135 @@ public class ViewPenyediaViewBarang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnFind)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFind))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAll))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFindActionPerformed
+
+    private void btnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAllActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public void setHeader() {
-        String[] header = {"No","Id Barang","Nama Barang","Jenis Barang","Stock"};
-        DefaultTableModel model = new DefaultTableModel(null, header);
-        tabelBarang.setModel(model);
+    
+    public JButton getBtnBack() {
+        return btnBack;
     }
     
-    public void inputData(ArrayList<Barang> listBarang) {
-        DefaultTableModel model = (DefaultTableModel)tabelBarang.getModel();
-        if (listBarang != null) {
-            for (int i = 0; i < listBarang.size(); i++) {
-                model.addRow(new String[] {(i+1)+"",listBarang.get(i).getIdBarang()
-                ,listBarang.get(i).getNamaBarang(),listBarang.get(i).getJenisBarang()
-                ,listBarang.get(i).getStock()+""});
-            }
-        }
-        else {
-            model.addRow(new String[] {"","","","",""});
-        }    
+    public JButton getFind(){
+        return btnFind;
+    }
+    
+    public JButton getAll(){
+        return btnAll;
+    }
+    
+    public void setTxtFind(String s){
+        txtFind.setText(s);
+    }
+    
+    public String getTxtFind(){
+        return txtFind.getText();
     }
 
-    public JButton getBtnBack() {
-        return btnCancel;
+    public void addListener(ActionListener e) {
+        btnBack.addActionListener(e);
+        btnFind.addActionListener(e);
+        btnAll.addActionListener(e);
     }
     
-    public void addListener(ActionListener e) {
-        btnCancel.addActionListener(e);
+    public void setTableMenu(){
+        app.getArrayPenyedia();
+        resett(app.ListBrg.size());
+        tabelBarang.setModel(resetTable);  
+        for(int i=0; i<app.ListBrg.size(); i++){
+            tabelBarang.setValueAt(app.ListBrg.get(i).getIdBarang(), i, 0);
+            tabelBarang.setValueAt(app.ListBrg.get(i).getNamaBarang(), i, 1);
+            tabelBarang.setValueAt(app.ListBrg.get(i).getJenisBarang(), i, 2);
+            tabelBarang.setValueAt(app.ListBrg.get(i).getStock(), i, 3);
+        }
+        reset();
+    }
+    
+    public void setTableMenuBarangKhusus(){
+        app.getArrayPenyedia(txtFind.getText());
+        resett(app.ListBrg.size());
+        tabelBarang.setModel(resetTable);
+        for(int i=0; i<app.ListBrg.size(); i++){
+            tabelBarang.setValueAt(app.ListBrg.get(i).getIdBarang(), i, 0);
+            tabelBarang.setValueAt(app.ListBrg.get(i).getIdBarang(), i, 1);
+            tabelBarang.setValueAt(app.ListBrg.get(i).getNamaBarang(), i, 2);
+            tabelBarang.setValueAt(app.ListBrg.get(i).getStock(), i, 3);                        
+        }
+        if(app.ListBrg.size()==0){           
+            JOptionPane.showMessageDialog(null,"ID Gudang salah!");
+        }
+        reset();
+    }
+    
+    public void reset(){
+        txtFind.setText(null);
+    }
+    
+    public void resett(int i){
+        String[] header = {"ID Barang","Nama Barang","Jenis","Stock"};
+        resetTable = new DefaultTableModel(null, header);
+        resetTable.setRowCount(i);
     }
         
-//    public static void setListBarang(ArrayList<Barang> barang) {
-//        listBarang = barang;
-//    }
-//    
-//    public static ArrayList<Barang> getListBarang() {
-//        return listBarang;
-//    }
-//
-//    private static ArrayList<Barang> listBarang;
+    private DefaultTableModel resetTable;
+    private AplikasiInventaris app = new AplikasiInventaris();
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnAll;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnFind;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelBarang;
+    private javax.swing.JTextField txtFind;
     // End of variables declaration//GEN-END:variables
 }

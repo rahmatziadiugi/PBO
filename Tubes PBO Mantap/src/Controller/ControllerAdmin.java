@@ -19,7 +19,8 @@ public class ControllerAdmin implements ActionListener {
     public ControllerAdmin() {
         view = new ViewAdmin();
         view.setVisible(true);
-        view.addListener(this);
+        view.addListener(this);                
+        view.setTitle("Aplikasi Inventaris - Admin");
     }
     
     @Override

@@ -12,6 +12,19 @@ package Model;
 public abstract class Orang {
     private int id;
     private String nama;
+    private static int count=1;
+    
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Orang.count = count;
+    }
+    
+    public static void incCount(){
+        Orang.count++;
+    }
     
     public Orang(int id, String nama) {
         this.id=id;

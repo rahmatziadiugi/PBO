@@ -24,7 +24,9 @@ public class ControllerPenyediaViewBarang implements ActionListener {
         app = new AplikasiInventaris();
         view = new ViewPenyediaViewBarang();
         view.setVisible(true);
+        view.setTableMenu();
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Supplier");
     }
             
     @Override
@@ -33,6 +35,10 @@ public class ControllerPenyediaViewBarang implements ActionListener {
         if (source.equals(view.getBtnBack())) {
             ControllerPenyediaUtama pu = new ControllerPenyediaUtama();
             view.dispose();
+        } else if(source.equals(view.getFind())){
+            view.setTableMenuBarangKhusus();
+        } else if(source.equals(view.getAll())){
+            view.setTableMenu();
         }
         
     }

@@ -7,6 +7,7 @@ package Controller;
 
 import DB.Database;
 import Model.AplikasiInventaris;
+import Model.Orang;
 import Model.Penyedia;
 import View.ViewAdminAddPenyedia;
 import java.awt.event.ActionEvent;
@@ -26,6 +27,7 @@ public class ControllerAdminAPenyedia implements ActionListener {
         view = new ViewAdminAddPenyedia();
         view.setVisible(true);
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Admin");
     }
 
     @Override
@@ -34,7 +36,8 @@ public class ControllerAdminAPenyedia implements ActionListener {
         Object source = ae.getSource();
         if(source.equals(view.getbtnAdd())) {
             try{
-                if(db.manipulate("INSERT INTO `daftarorang` (`id`, `nama`, `username`, `password`, `job`) VALUES (NULL, '"
+                if(db.manipulate("INSERT INTO `daftarorang` (`id`, `nama`, `username`, `password`, `job`) VALUES ("
+                        + Orang.getCount() + ", '"
                         + view.getTxtNama()+ "', '"
                         + view.getTxtUsername() + "', '"
                         + view.getTxtPassword() + "', '2')") >= 1)

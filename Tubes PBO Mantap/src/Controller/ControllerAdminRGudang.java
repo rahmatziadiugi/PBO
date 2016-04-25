@@ -25,6 +25,7 @@ public class ControllerAdminRGudang implements ActionListener {
         view = new ViewAdminRemoveGudang();
         view.setVisible(true);
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Admin");
     }
     
     @Override

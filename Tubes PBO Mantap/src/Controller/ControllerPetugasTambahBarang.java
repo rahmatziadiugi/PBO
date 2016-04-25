@@ -38,6 +38,7 @@ public class ControllerPetugasTambahBarang implements ActionListener {
         view = new ViewPetugasTambahBarang();
         view.setVisible(true);
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Petugas");
     }
     
     @Override

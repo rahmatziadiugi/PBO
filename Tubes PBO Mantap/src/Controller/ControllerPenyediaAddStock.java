@@ -8,7 +8,7 @@ package Controller;
 import DB.Database;
 import Model.AplikasiInventaris;
 import Model.Barang;
-import View.ViewPenyediaCreateBarang;
+import View.ViewPenyediaAddStock;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -19,14 +19,14 @@ import javax.swing.JOptionPane;
  *
  * @author Riri
  */
-public class ControllerPenyediaCreateBarang implements ActionListener {
-    private ViewPenyediaCreateBarang view;
+public class ControllerPenyediaAddStock implements ActionListener {
+    private ViewPenyediaAddStock view;
     private AplikasiInventaris app;
     Database db = new Database();
     
-    public ControllerPenyediaCreateBarang() {
+    public ControllerPenyediaAddStock() {
         app = new AplikasiInventaris();
-        view = new ViewPenyediaCreateBarang();
+        view = new ViewPenyediaAddStock();
         view.setVisible(true);
         view.addListener(this);
         view.setTitle("Aplikasi Inventaris - Supplier");
@@ -37,21 +37,22 @@ public class ControllerPenyediaCreateBarang implements ActionListener {
         Object source = e.getSource();
         if(source.equals(view.getBtnTambah())) {
             db.connect();
-            try {
-                if(db.manipulate("INSERT INTO `daftarbarangpenyedia` (`idBarang`, `namaBarang`, `jenisBarang`, `stock`, `id_penyedia`) VALUES ('INV"
-                    + Barang.getCount() + view.getNamaBarang().substring(0,3).toUpperCase() + "', '"
-                    + view.getNamaBarang() + "', '"
-                    + view.getJenisBarang() + "', '"
-                    + view.getStock() + "', '"
-                    + app.getId() + "')") >= 1)
-                {
-                    Barang.incCount();
-                    JOptionPane.showMessageDialog(null,"Barang berhasil ditambah!");
-                } else{
-                    JOptionPane.showMessageDialog(null,"Barang sudah terdaftar!");
-                }
+            ResultSet rs = db.get("SELECT * FROM `daftarbarangpenyedia` WHERE `idBarang` = '"
+                    + view.getNamaBarang() + "' AND `id_penyedia` = "
+                    + AplikasiInventaris.getId());
+            try {                
+                if(rs.first()){
+                    int sisa = view.getStock() + rs.getInt("stock");
+                    if(db.manipulate("UPDATE `daftarbarangpenyedia` SET `stock` = '"
+                            + sisa + "' WHERE `daftarbarangpenyedia`.`idBarang` = '"
+                            + view.getNamaBarang() + "' AND `daftarbarangpenyedia`.`id_penyedia` = '"
+                            + AplikasiInventaris.getId() + "';") >= 1)
+                    {
+                        JOptionPane.showMessageDialog(null,"Stock Barang berhasi ditambah!");
+                    }
+                }                                    
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Gagal!");
+                JOptionPane.showMessageDialog(null,"ID Barang salah!");
             }
             db.disconnect();
             view.reset();

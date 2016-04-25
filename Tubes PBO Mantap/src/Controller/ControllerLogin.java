@@ -30,7 +30,8 @@ public class ControllerLogin implements ActionListener {
         app = new AplikasiInventaris();
         view = new Login();
         view.setVisible(true);
-        view.addListener(this);
+        view.addListener(this);        
+        view.setTitle("Aplikasi Inventaris");
     }
     
     @Override

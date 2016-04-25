@@ -25,6 +25,7 @@ public class ControllerAdminRPenyedia implements ActionListener {
         view = new ViewAdminRemovePenyedia();
         view.setVisible(true);
         view.addListener(this);
+        view.setTitle("Aplikasi Inventaris - Admin");
     }
     
     @Override

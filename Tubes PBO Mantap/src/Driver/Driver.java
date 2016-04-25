@@ -9,6 +9,7 @@ import Controller.ControllerLogin;
 import DB.Database;
 import Model.AplikasiInventaris;
 import Model.Barang;
+import Model.Orang;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -27,11 +28,21 @@ public class Driver {
                 Barang.incCount();
             }            
         }
+        rs.close();
+        rs = db.get("SELECT * FROM `daftarorang`");
+        Orang o = null;
+        if(rs.last()){
+            /*id 0 milik admin,             
+            supaya ada yang ngisi di id 1 di kurang 1
+            karna jumlah defaultnya 1, yaitu admin
+            */
+            for(int i = 0; i<rs.getRow()-1;i++){
+                Orang.incCount();
+            }            
+        }
+        rs.close();
         db.disconnect();
         
-        ControllerLogin clg = new ControllerLogin();
-//        AplikasiInventaris inv = new AplikasiInventaris();
-//        inv.login();
-        
+        ControllerLogin clg = new ControllerLogin();        
     }
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,6 +44,11 @@ public class ViewPetugasLihatBarang extends javax.swing.JFrame {
         btnKembali = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableBarangGudang = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtFind = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        btnFind = new javax.swing.JButton();
+        btnAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +68,25 @@ public class ViewPetugasLihatBarang extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TableBarangGudang);
 
+        jLabel1.setText("Lihat Berdasarkan");
+
+        txtFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFindActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("ID Gudang");
+
+        btnFind.setText("Find");
+
+        btnAll.setText("View All");
+        btnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,47 +97,126 @@ public class ViewPetugasLihatBarang extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 443, Short.MAX_VALUE)
                         .addComponent(btnKembali))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnFind))
+                            .addComponent(btnAll))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFind))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAll)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(btnKembali)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindActionPerformed
+
+    private void btnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAllActionPerformed
+
     public JButton getBtnKembali() {
         return btnKembali;
+    }
+    
+    public JButton getFind(){
+        return btnFind;
+    }
+    
+    public JButton getAll(){
+        return btnAll;
+    }
+    
+    public void setTxtFind(String s){
+        txtFind.setText(s);
+    }
+    
+    public String getTxtFind(){
+        return txtFind.getText();
     }
 
     public void addListener(ActionListener e) {
         btnKembali.addActionListener(e);
+        btnFind.addActionListener(e);
+        btnAll.addActionListener(e);
     }
     
     public void setTableMenu(){
-        String s=null;
         app.getArray();
-        TableBarangGudang.setSize(100, 100);
+        resett(app.ListBrg.size());
+        TableBarangGudang.setModel(resetTable);  
         for(int i=0; i<app.ListBrg.size(); i++){
             TableBarangGudang.setValueAt(app.ListGudang.get(i).getIdGudang(), i, 0);
             TableBarangGudang.setValueAt(app.ListBrg.get(i).getIdBarang(), i, 1);
             TableBarangGudang.setValueAt(app.ListBrg.get(i).getNamaBarang(), i, 2);
             TableBarangGudang.setValueAt(app.ListBrg.get(i).getStock(), i, 3);
         }
+        reset();
     }
     
+    public void setTableMenuGudangKhusus(){
+        app.getArray(txtFind.getText());
+        resett(app.ListBrg.size());
+        TableBarangGudang.setModel(resetTable);
+        for(int i=0; i<app.ListBrg.size(); i++){
+            TableBarangGudang.setValueAt(app.ListGudang.get(i).getIdGudang(), i, 0);
+            TableBarangGudang.setValueAt(app.ListBrg.get(i).getIdBarang(), i, 1);
+            TableBarangGudang.setValueAt(app.ListBrg.get(i).getNamaBarang(), i, 2);
+            TableBarangGudang.setValueAt(app.ListBrg.get(i).getStock(), i, 3);                        
+        }
+        if(app.ListBrg.size()==0){           
+            JOptionPane.showMessageDialog(null,"ID Gudang salah!");
+        }
+        reset();
+    }
+    
+    public void reset(){
+        txtFind.setText(null);
+    }
+    
+    public void resett(int i){
+        String[] header = {"ID Gudang","ID Barang","Nama Barang","Jumlah"};
+        resetTable = new DefaultTableModel(null, header);
+        resetTable.setRowCount(i);
+    }
+        
+    private DefaultTableModel resetTable;
     private AplikasiInventaris app = new AplikasiInventaris();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableBarangGudang;
+    private javax.swing.JButton btnAll;
+    private javax.swing.JButton btnFind;
     private javax.swing.JButton btnKembali;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtFind;
     // End of variables declaration//GEN-END:variables
 }
