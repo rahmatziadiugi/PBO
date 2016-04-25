@@ -22,8 +22,8 @@ public class Driver {
         db.connect();
         ResultSet rs = db.get("SELECT * FROM `daftarbarangpenyedia`");
         Barang b = null;
-        if(!(rs.last() == false)){
-            b.setStock(rs.getRow());
+        if(rs.last()){
+            b.setStock(rs.getRow()+1);
         }
         db.disconnect();
         
