@@ -34,8 +34,8 @@ public class ControllerAdminRGudang implements ActionListener {
         Object source = ae.getSource();
         if(source.equals(view.getbtnRemove())) {
             try{
-                if(db.manipulate("DELETE FROM `daftargudang` WHERE `daftargudang`.`id_gudang` = \\'"
-                        + view.getTxtIDGudang() + "\\'\"") >= 1)
+                if(db.manipulate("DELETE FROM `daftargudang` WHERE `daftargudang`.`id_gudang` = \""
+                        + view.getTxtIDGudang() + "\";") >= 1)
                 {
                     JOptionPane.showMessageDialog(null,"Berhasil menghapus gudang!");
                     db.disconnect();
